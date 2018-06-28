@@ -5,9 +5,12 @@
     <classes>
       <class name="testClasses.SNLTestCases">
         <methods>
+          <include name="verifyDeleteUserWithoutRegisteringAnyUser"/>
+          <include name="verifyRollDiceWithoutRegisteringAnyUser"/>
+          <include name="verifyAddingSameNameUsers"/>
           <include name="verifyAddingMoreThanFourUsers"/>
-          <include name="initVars"/>
-          <include name="tearDown"/>
+          <include name="verifyExceptionsAreWorking"/>
+          <include name="initExceptions"/>
         </methods>
       </class> <!-- testClasses.SNLTestCases -->
     </classes>

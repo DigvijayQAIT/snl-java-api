@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 import org.json.JSONException;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.qainfotech.tap.training.snl.api.GameInProgressException;
@@ -15,44 +15,47 @@ import com.qainfotech.tap.training.snl.api.MaxPlayersReachedExeption;
 import com.qainfotech.tap.training.snl.api.NoUserWithSuchUUIDException;
 import com.qainfotech.tap.training.snl.api.PlayerExistsException;
 
-import actionClasses.BoardTest;
+import actionClasses.BoardActions;
+import actionClasses.ExceptionActions;
 
+/**
+ * @author Digvijay
+ *
+ */
 public class SNLTestCases {
 
-	BoardTest boardTest;
+	BoardActions boardTest;
+	ExceptionActions exceptionTest;
 
-	@BeforeMethod
-	public void initVars() throws FileNotFoundException, UnsupportedEncodingException, IOException {
-		boardTest = new BoardTest();
+	@BeforeClass
+	public void initExceptions() throws FileNotFoundException, UnsupportedEncodingException, IOException {
+		boardTest = new BoardActions();
+		exceptionTest = new ExceptionActions();
 	}
 
-	@Test(expectedExceptions = {JSONException.class})
-	public void verifyRollDiceWithoutRegisteringAnyUser()
-			throws FileNotFoundException, UnsupportedEncodingException, InvalidTurnException {
-		boardTest.rollDiceWithoutRegisteringAnyUser();
+	@Test(expectedExceptions = { JSONException.class, NullPointerException.class, MaxPlayersReachedExeption.class,
+			PlayerExistsException.class })
+	public void verifyBoardIsWorking() throws InvalidTurnException, NoUserWithSuchUUIDException, PlayerExistsException,
+			GameInProgressException, MaxPlayersReachedExeption, IOException {
+		boardTest.verifyRollDiceWithoutRegisteringAnyUser();
+		boardTest.verifyDeleteUserWithoutRegisteringAnyUser();
+		boardTest.verifyAddMoreThanFourUsers();
+		boardTest.verifyAddSameNameUsers();
 	}
 
-	@Test(expectedExceptions = {NullPointerException.class})
-	public void verifyDeleteUserWithoutRegisteringAnyUser()
-			throws FileNotFoundException, UnsupportedEncodingException, NoUserWithSuchUUIDException {
-		boardTest.deleteUserWithoutRegisteringAnyUser();
+	@Test
+	public void verifyExceptionsAreWorking() {
+		exceptionTest.verifyGameInProgressException();
+		exceptionTest.verifyInvalidTurnException();
+		exceptionTest.verifyMaxPlayersReachedExeption();
+		exceptionTest.verifyNoUserWithSuchUUIDException();
+		exceptionTest.verifyPlayerExistsException();
 	}
 
-	@Test(expectedExceptions = {MaxPlayersReachedExeption.class})
-	public void verifyAddingMoreThanFourUsers() throws FileNotFoundException, UnsupportedEncodingException,
-			PlayerExistsException, GameInProgressException, MaxPlayersReachedExeption, IOException {
-		boardTest.addMoreThanFourUsers();
-	}
-
-	@Test(expectedExceptions = {PlayerExistsException.class})
-	public void verifyAddingSameNameUsers() throws FileNotFoundException, UnsupportedEncodingException,
-			PlayerExistsException, GameInProgressException, MaxPlayersReachedExeption, IOException {
-		boardTest.addSameNameUsers();
-	}
-
-	@AfterMethod
-	public void tearDown() {
+	@AfterClass
+	public void tearDownException() {
 		boardTest = null;
+		exceptionTest = null;
 		System.gc();
 	}
 }

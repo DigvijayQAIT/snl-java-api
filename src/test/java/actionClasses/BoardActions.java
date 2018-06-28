@@ -13,37 +13,42 @@ import com.qainfotech.tap.training.snl.api.MaxPlayersReachedExeption;
 import com.qainfotech.tap.training.snl.api.NoUserWithSuchUUIDException;
 import com.qainfotech.tap.training.snl.api.PlayerExistsException;
 
-public class BoardTest {
+/**
+ * @author Digvijay
+ *
+ */
+public class BoardActions {
 
-	Board board;
+	private Board board;
 
-	public BoardTest() throws FileNotFoundException, UnsupportedEncodingException, IOException {
+	public BoardActions() throws FileNotFoundException, UnsupportedEncodingException, IOException {
 		board = new Board();
 	}
 
-	public void rollDiceWithoutRegisteringAnyUser()
+	public void verifyRollDiceWithoutRegisteringAnyUser()
 			throws FileNotFoundException, UnsupportedEncodingException, InvalidTurnException {
 		board.rollDice(null);
 	}
 
-	public void deleteUserWithoutRegisteringAnyUser()
+	public void verifyDeleteUserWithoutRegisteringAnyUser()
 			throws FileNotFoundException, UnsupportedEncodingException, NoUserWithSuchUUIDException {
 		board.deletePlayer(null);
 	}
 
-	public void addMoreThanFourUsers() throws FileNotFoundException, UnsupportedEncodingException,
+	public void verifyAddMoreThanFourUsers() throws FileNotFoundException, UnsupportedEncodingException,
 			PlayerExistsException, GameInProgressException, MaxPlayersReachedExeption, IOException {
 		String name = "some_name";
 		addUser(name, true);
 	}
 
-	public void addSameNameUsers() throws FileNotFoundException, UnsupportedEncodingException, PlayerExistsException,
+	public void verifyAddSameNameUsers() throws FileNotFoundException, UnsupportedEncodingException, PlayerExistsException,
 			GameInProgressException, MaxPlayersReachedExeption, IOException {
 		String name = "some_name";
 		addUser(name, false);
 	}
-	
-	public void addUser(String name, Boolean add_i) throws FileNotFoundException, UnsupportedEncodingException, PlayerExistsException, GameInProgressException, MaxPlayersReachedExeption, IOException {
+
+	public void addUser(String name, Boolean add_i) throws FileNotFoundException, UnsupportedEncodingException,
+			PlayerExistsException, GameInProgressException, MaxPlayersReachedExeption, IOException {
 		int beforePlayerCount, afterPlayerCount;
 		if (add_i) {
 			for (int i = 0; i < 6; ++i) {
@@ -55,7 +60,7 @@ public class BoardTest {
 				}
 			}
 		} else {
-			for (int i = 0; i < 5; ++i) {
+			for (int i = 0; i < 4; ++i) {
 				beforePlayerCount = board.getData().getJSONArray("players").length();
 				board.registerPlayer(name);
 				afterPlayerCount = board.getData().getJSONArray("players").length();
