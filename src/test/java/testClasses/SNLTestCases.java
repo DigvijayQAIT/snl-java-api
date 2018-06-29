@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
+import org.json.JSONException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -34,14 +35,21 @@ public class SNLTestCases {
 		exceptionTest = new ExceptionActions();
 		play = new PlayAction();
 	}
-	
-	@Test
-	public void playGame() throws FileNotFoundException, UnsupportedEncodingException, PlayerExistsException, GameInProgressException, MaxPlayersReachedExeption, IOException, InvalidTurnException {
+
+	/*
+	 * Small game play concept
+	 */
+	// @Test
+	public void playGame()
+			throws FileNotFoundException, UnsupportedEncodingException, PlayerExistsException, GameInProgressException,
+			MaxPlayersReachedExeption, IOException, InvalidTurnException, NoUserWithSuchUUIDException {
 		play.addUser("someUser");
 		play.rollDice();
+		play.deletePlayers();
 	}
 
-	//@Test(expectedExceptions = { JSONException.class, NoUserWithSuchUUIDException.class, MaxPlayersReachedExeption.class, PlayerExistsException.class })
+	@Test(expectedExceptions = { JSONException.class, NoUserWithSuchUUIDException.class,
+			MaxPlayersReachedExeption.class, PlayerExistsException.class })
 	public void verifyBoardIsWorking() throws InvalidTurnException, NoUserWithSuchUUIDException, PlayerExistsException,
 			GameInProgressException, MaxPlayersReachedExeption, IOException {
 		boardTest.verifyRollDiceWithoutRegisteringAnyUser();
@@ -51,9 +59,11 @@ public class SNLTestCases {
 		boardTest.verifyRegisterUserAfterStartingGame();
 		boardTest.verifyDeleteUserWhichDoesNotExist();
 		boardTest.verifyUserIsDeleted();
+		boardTest.verifyCorrectTurn();
+		boardTest.verifyPlayerPositionChangeAfterDiceRoll();
 	}
 
-	//@Test
+	@Test
 	public void verifyExceptionsAreWorking() {
 		exceptionTest.verifyGameInProgressException();
 		exceptionTest.verifyInvalidTurnException();

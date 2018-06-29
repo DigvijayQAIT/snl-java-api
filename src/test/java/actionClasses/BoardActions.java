@@ -129,4 +129,35 @@ public class BoardActions {
 		}
 	}
 
+	public void verifyCorrectTurn() {
+		String name = "some_name";
+		UUID uuid = null;
+		try {
+			addUser(name, 4, Boolean.TRUE);
+			// getting the uuid of second player instead of first player
+			uuid = (UUID) board.getData().getJSONArray("players").getJSONObject(1).get("uuid");
+			board.rollDice(uuid);
+
+		} catch (Exception e) {
+			Assert.assertEquals(e.getClass(), new InvalidTurnException(uuid).getClass());
+		}
+	}
+
+	public void verifyPlayerPositionChangeAfterDiceRoll() {
+		String name = "any_name";
+		UUID uuid = null;
+		try {
+			addUser(name, 4, Boolean.TRUE);
+			int before_pos = board.getData().getJSONArray("players").getJSONObject(0).getInt("position");
+			uuid = (UUID) board.getData().getJSONArray("players").getJSONObject(0).get("uuid");
+			int dice = board.rollDice(uuid).getInt("dice");
+			Assert.assertEquals(board.getData().getInt("turn"), 1, "Turn is not updated");
+			int after_pos = board.getData().getJSONArray("players").getJSONObject(0).getInt("position");
+			Assert.assertEquals(after_pos, before_pos + dice, "Positon of player is not what is need to be");
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
 }

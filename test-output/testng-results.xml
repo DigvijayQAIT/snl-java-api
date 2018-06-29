@@ -1,21 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="364" started-at="2018-06-28T14:07:06Z" finished-at="2018-06-28T14:07:06Z">
+  <suite name="Default suite" duration-ms="214" started-at="2018-06-29T08:01:52Z" finished-at="2018-06-29T08:01:53Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="364" started-at="2018-06-28T14:07:06Z" finished-at="2018-06-28T14:07:06Z">
+    <test name="Default test" duration-ms="214" started-at="2018-06-29T08:01:52Z" finished-at="2018-06-29T08:01:53Z">
       <class name="testClasses.SNLTestCases">
-        <test-method status="PASS" signature="initExceptions()[pri:0, instance:testClasses.SNLTestCases@7921b0a2]" name="initExceptions" is-config="true" duration-ms="164" started-at="2018-06-28T19:37:06Z" finished-at="2018-06-28T19:37:06Z">
+        <test-method status="PASS" signature="initExceptions()[pri:0, instance:testClasses.SNLTestCases@5ae9a829]" name="initExceptions" is-config="true" duration-ms="89" started-at="2018-06-29T13:31:52Z" finished-at="2018-06-29T13:31:53Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initExceptions -->
-        <test-method status="PASS" signature="playGame()[pri:0, instance:testClasses.SNLTestCases@7921b0a2]" name="playGame" duration-ms="69" started-at="2018-06-28T19:37:06Z" finished-at="2018-06-28T19:37:06Z">
+        <test-method status="PASS" signature="verifyBoardIsWorking()[pri:0, instance:testClasses.SNLTestCases@5ae9a829]" name="verifyBoardIsWorking" duration-ms="23" started-at="2018-06-29T13:31:53Z" finished-at="2018-06-29T13:31:53Z">
+          <exception class="org.json.JSONException">
+            <message>
+              <![CDATA[JSONArray[0] not found.]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.json.JSONException: JSONArray[0] not found.
+	at org.json.JSONArray.get(JSONArray.java:201)
+	at org.json.JSONArray.getJSONObject(JSONArray.java:364)
+	at com.qainfotech.tap.training.snl.api.Board.rollDice(Board.java:129)
+	at actionClasses.BoardActions.verifyRollDiceWithoutRegisteringAnyUser(BoardActions.java:31)
+	at testClasses.SNLTestCases.verifyBoardIsWorking(SNLTestCases.java:52)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:104)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:645)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:851)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1177)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:756)
+	at org.testng.TestRunner.run(TestRunner.java:610)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:387)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:382)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:340)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:289)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1293)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1218)
+	at org.testng.TestNG.runSuites(TestNG.java:1133)
+	at org.testng.TestNG.run(TestNG.java:1104)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.json.JSONException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- playGame -->
-        <test-method status="PASS" signature="tearDownException()[pri:0, instance:testClasses.SNLTestCases@7921b0a2]" name="tearDownException" is-config="true" duration-ms="71" started-at="2018-06-28T19:37:06Z" finished-at="2018-06-28T19:37:06Z">
+        </test-method> <!-- verifyBoardIsWorking -->
+        <test-method status="PASS" signature="verifyExceptionsAreWorking()[pri:0, instance:testClasses.SNLTestCases@5ae9a829]" name="verifyExceptionsAreWorking" duration-ms="13" started-at="2018-06-29T13:31:53Z" finished-at="2018-06-29T13:31:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyExceptionsAreWorking -->
+        <test-method status="PASS" signature="tearDownException()[pri:0, instance:testClasses.SNLTestCases@5ae9a829]" name="tearDownException" is-config="true" duration-ms="45" started-at="2018-06-29T13:31:53Z" finished-at="2018-06-29T13:31:53Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownException -->

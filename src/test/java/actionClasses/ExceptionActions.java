@@ -25,11 +25,11 @@ public class ExceptionActions {
 	private NoUserWithSuchUUIDException noUserWithSuchUUIDException;
 	private PlayerExistsException playerExistsException;
 
-	
 	/**
 	 * Variables
 	 */
-	private String gameInProgressMessage, invalidTurnMessage, maxPlayerReachedMessage, noUserMessage, playerExistMessage;
+	private String gameInProgressMessage, invalidTurnMessage, maxPlayerReachedMessage, noUserMessage,
+			playerExistMessage;
 	private String playerName;
 	private Integer players;
 	private UUID uuid;
@@ -96,7 +96,7 @@ public class ExceptionActions {
 		noUserMessage = "No Player with uuid '" + playerName + "' on board";
 		playerExistMessage = "Player '" + playerName + "' already exists on board";
 	}
-	
+
 	/**
 	 * Initialize Objects
 	 */
